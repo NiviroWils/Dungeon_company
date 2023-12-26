@@ -1,0 +1,30 @@
+<!-- dungeon_company_app/templates/home.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Домашняя - Dungeon Company{% endblock %}
+
+{% block content %}
+<div class="jumbotron mt-5 text-center" style="background: linear-gradient(135deg, #5B84B1 0%, #8F5B8F 100%); color: #fff; padding: 30px; border-radius: 15px;">
+    <h1 class="display-4">Добро пожаловать в Dungeon Company!</h1>
+    <p class="lead">Наша компания, Dungeon Company, предлагает широкий ассортимент настольных игр для всех возрастов и вкусов. Мы гордимся тем, что помогаем семьям и друзьям проводить время весело и увлекательно.</p>
+    <img src="{% static 'your_app/images/board_games.jpg' %}" class="img-fluid mt-4" alt="Настольные игры">
+</div>
+
+<h2>Последние добавленные товары</h2>
+<div class="row">
+    {% for product in latest_products %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ product.image.url }}"class="img-fluid mx-auto d-block" style="width: 200px; height: 200px; object-fit: cover;" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                     <a href="{% url 'product_detail' pk=product.pk %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

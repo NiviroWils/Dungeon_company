@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление товара - Dungeon Company{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Добавление товара</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить товар</button>
+    </form>
+</div>
+{% endblock %}
